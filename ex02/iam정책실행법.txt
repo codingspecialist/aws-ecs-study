@@ -1,0 +1,19 @@
+aws iam create-role \
+      --role-name ecsTaskExecutionRole \
+      --assume-role-policy-document file://ecs-tasks-trust-policy.json
+
+aws iam attach-role-policy \
+      --role-name ecsTaskExecutionRole \
+      --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+
+aws iam put-role-policy \
+    --role-name ecsTaskExecutionRole \
+    --policy-name ecsTaskSecret \
+    --policy-document file://ecs-tasks-secret.json
+    
+aws iam create-policy \
+    --policy-name FargateECRPolicy \
+    --policy-document file://ecs-fargate-policy.json
+
+vpc 정보 가져오는 법
+aws ec2 describe-vpcs --query 'Vpcs[0].VpcId'

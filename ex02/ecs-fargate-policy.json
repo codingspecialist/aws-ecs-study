@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecr:GetAuthorizationToken",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage"
+        ],
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "aws:sourceVpc": "vpc-0ad4795ce78341865"
+          }
+        }
+      }
+    ]
+  }
+  
