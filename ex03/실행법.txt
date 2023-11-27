@@ -1,0 +1,8 @@
+git clone https://github.com/aws-samples/amazon-ecs-cli-sample-app.git demo-app && \ 
+cd demo-app &&                               \
+copilot init --app demo                      \
+  --name api                                 \
+  --type 'Load Balanced Web Service'         \
+  --dockerfile './Dockerfile'                \
+  --port 80                                  \
+  --deploy
